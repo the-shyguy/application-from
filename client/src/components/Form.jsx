@@ -3,7 +3,7 @@ import Input from "./Input";
 
 const Form = () => {
   return (
-    <div className="w-full bg-[#F9F9F9]">
+    <div className="w-full bg-[#F9F9F9] pb-10">
       <h2 className=" uppercase py-10 w-2/3 mx-auto text-lg font-semibold">
         Submit your Application
       </h2>
@@ -31,7 +31,12 @@ const Form = () => {
           type={"file"}
           accept={"image/*"}
         />
-        {/* <button type="submit">Submit</button> */}
+        <button
+          className="px-4 py-2 bg-blue-600 text-white w-24 rounded-md"
+          type="submit"
+        >
+          Submit
+        </button>
       </form>
     </div>
   );
