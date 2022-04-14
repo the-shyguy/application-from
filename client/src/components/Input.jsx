@@ -11,7 +11,7 @@ const Input = ({ text, type, accept, value, onChanges, name, required }) => {
           </label>
           {required ? (
             <input
-              className="px-2 py-1 border rounded-sm"
+              className="px-2 py-1 border rounded-md"
               type={type}
               name={name}
               id={text}
@@ -22,7 +22,7 @@ const Input = ({ text, type, accept, value, onChanges, name, required }) => {
             />
           ) : (
             <input
-              className="px-2 py-1 rounded-sm"
+              className="px-2 py-1 rounded-md"
               type={type}
               name={name}
               id={text}
@@ -39,7 +39,7 @@ const Input = ({ text, type, accept, value, onChanges, name, required }) => {
             {text} :
           </label>
           <input
-          className="border px-2 py-1 rounded-sm"
+          className="border px-2 py-1 rounded-md"
             type={type}
             name={name}
             id={text}
@@ -57,7 +57,7 @@ const Input = ({ text, type, accept, value, onChanges, name, required }) => {
             {text} :
           </label>
           <select
-          className=" border rounded"
+          className=" border rounded-md p-1"
             name={name}
             id={text}
             value={value}
@@ -84,7 +84,7 @@ const Input = ({ text, type, accept, value, onChanges, name, required }) => {
             {text} :
           </label>
           <textarea
-            className="px-2 py-1 border rounded-sm"
+            className="px-2 py-1 border rounded-md"
             name={name}
             cols="30"
             rows="3"

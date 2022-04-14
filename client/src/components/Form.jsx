@@ -39,7 +39,7 @@ const Form = () => {
       <h2 className=" pl-2 uppercase pt-10 pb-5 w-1/2 mx-auto text-lg font-semibold">
         Submit your Application
       </h2>
-      <form className=" w-1/2 mx-auto flex flex-col bg-white px-8 py-6 rounded-md shadow-md">
+      <form className=" w-1/2 mx-auto flex flex-col bg-white px-16 py-10 rounded-md shadow-md">
         <Input
           text={"Full Name"}
           type={"text"}
