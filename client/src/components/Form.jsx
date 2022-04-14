@@ -3,9 +3,7 @@ import Input from "./Input";
 
 const Form = () => {
   const [state, setState] = useState({
-    firstName: "",
-    middleName: "",
-    lastName: "",
+    fullName: "",
     category: "",
     email: "",
     phone: "",
@@ -28,9 +26,7 @@ const Form = () => {
     const value = e.target.value;
     setGender(value);
   };
-  console.log(state.firstName);
-  console.log(state.middleName);
-  console.log(state.lastName);
+  console.log(state.fullName);
   console.log(state.DOB);
   console.log(state.category);
   console.log(state.email);
@@ -45,26 +41,10 @@ const Form = () => {
       </h2>
       <form className=" w-2/3 mx-auto flex flex-col">
         <Input
-          text={"First Name"}
+          text={"Full Name"}
           type={"text"}
-          name={"firstName"}
-          value={state.firstName}
-          onChanges={handleChange}
-          required={true}
-        />
-        <Input
-          text={"Middle Name"}
-          type={"text"}
-          name={"middleName"}
-          value={state.middleName}
-          onChanges={handleChange}
-          required={false}
-        />
-        <Input
-          text={"Last Name"}
-          type={"text"}
-          name={"lastName"}
-          value={state.lastName}
+          name={"fullName"}
+          value={state.fullName}
           onChanges={handleChange}
           required={true}
         />
