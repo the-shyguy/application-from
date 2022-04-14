@@ -6,12 +6,12 @@ const Input = ({ text, type, accept, value, onChanges, name, required }) => {
     <div className="mb-6 text-lg">
       {(type === "text" || type === "email" || type === "date") && (
         <div>
-          <label className="mr-2" htmlFor={text}>
+          <label className="mr-6" htmlFor={text}>
             {text} :
           </label>
           {required ? (
             <input
-              className="px-2 py-1"
+              className="px-2 py-1 border rounded-sm"
               type={type}
               name={name}
               id={text}
@@ -22,7 +22,7 @@ const Input = ({ text, type, accept, value, onChanges, name, required }) => {
             />
           ) : (
             <input
-              className="px-2 py-1"
+              className="px-2 py-1 rounded-sm"
               type={type}
               name={name}
               id={text}
@@ -35,10 +35,11 @@ const Input = ({ text, type, accept, value, onChanges, name, required }) => {
       )}
       {type === "tel" && (
         <div>
-          <label className="mr-2" htmlFor={text}>
+          <label className="mr-6" htmlFor={text}>
             {text} :
           </label>
           <input
+          className="border px-2 py-1 rounded-sm"
             type={type}
             name={name}
             id={text}
@@ -52,10 +53,11 @@ const Input = ({ text, type, accept, value, onChanges, name, required }) => {
       )}
       {type === "select" && (
         <div>
-          <label className="mr-2" htmlFor={text}>
+          <label className="mr-6" htmlFor={text}>
             {text} :
           </label>
           <select
+          className=" border rounded"
             name={name}
             id={text}
             value={value}
@@ -78,11 +80,11 @@ const Input = ({ text, type, accept, value, onChanges, name, required }) => {
       )}
       {type === "textarea" && (
         <div className=" flex">
-          <label className="mr-2" htmlFor={text}>
+          <label className="mr-6" htmlFor={text}>
             {text} :
           </label>
           <textarea
-            className="px-2 py-1"
+            className="px-2 py-1 border rounded-sm"
             name={name}
             cols="30"
             rows="3"
@@ -96,7 +98,7 @@ const Input = ({ text, type, accept, value, onChanges, name, required }) => {
       )}
       {type === "file" && (
         <div>
-          <label className="mr-2" htmlFor={text}>
+          <label className="mr-6" htmlFor={text}>
             {text} :
           </label>
           <input type="file" accept={accept} id={text} required />

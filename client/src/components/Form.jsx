@@ -35,11 +35,11 @@ const Form = () => {
   console.log(selectGender);
 
   return (
-    <div className="w-full bg-[#F9F9F9] pb-10">
-      <h2 className=" uppercase py-10 w-2/3 mx-auto text-lg font-semibold">
+    <div className="w-full bg-gray-200 pb-10">
+      <h2 className=" pl-2 uppercase pt-10 pb-5 w-1/2 mx-auto text-lg font-semibold">
         Submit your Application
       </h2>
-      <form className=" w-2/3 mx-auto flex flex-col">
+      <form className=" w-1/2 mx-auto flex flex-col bg-white px-8 py-6 rounded-md shadow-md">
         <Input
           text={"Full Name"}
           type={"text"}
@@ -116,12 +116,14 @@ const Form = () => {
           type={"file"}
           accept={"image/*"}
         />
+        <div className="w-full flex justify-center mt-8">
         <button
           className="px-4 py-2 bg-blue-600 text-white w-24 rounded-md"
           type="submit"
         >
           Submit
         </button>
+        </div>
       </form>
     </div>
   );
