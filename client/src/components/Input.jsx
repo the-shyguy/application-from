@@ -39,7 +39,7 @@ const Input = ({ text, type, accept, value, onChanges, name, required }) => {
             {text} :
           </label>
           <input
-          className="border px-2 py-1 rounded-md"
+            className="border px-2 py-1 rounded-md"
             type={type}
             name={name}
             id={text}
@@ -57,7 +57,7 @@ const Input = ({ text, type, accept, value, onChanges, name, required }) => {
             {text} :
           </label>
           <select
-          className=" border rounded-md p-1"
+            className=" border rounded-md p-1"
             name={name}
             id={text}
             value={value}
@@ -101,7 +101,13 @@ const Input = ({ text, type, accept, value, onChanges, name, required }) => {
           <label className="mr-6" htmlFor={text}>
             {text} :
           </label>
-          <input type="file" accept={accept} id={text} required />
+          <input
+            type="file"
+            accept={accept}
+            id={text}
+            onChange={onChanges}
+            required
+          />
         </div>
       )}
     </div>

@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import Input from "./Input";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+  const navigate = useNavigate();
   const [state, setState] = useState({
     fullName: "",
+    DOB: "",
     category: "",
     email: "",
     phone: "",
@@ -11,13 +14,15 @@ const Form = () => {
   });
 
   const [selectGender, setGender] = useState("");
+  const [image, setImage] = useState(null);
 
-  const gender = ["Male", "Female", "Uncategorized"];
+  const genders = ["Male", "Female", "Uncategorized"];
 
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setState({
+      ...state,
       [name]: value,
     });
   };
@@ -26,6 +31,41 @@ const Form = () => {
     const value = e.target.value;
     setGender(value);
   };
+
+  const postData = async (e) => {
+    e.preventDefault();
+    const { fullName, DOB, category, email, phone, address } = state;
+    const gender = selectGender;
+
+    const res = await fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        fullName,
+        DOB,
+        gender,
+        category,
+        email,
+        phone,
+        address,
+      }),
+    });
+    const data = await res.json();
+
+    if (res.status === 422 || !data) {
+      window.alert(data.message + "!");
+    } else {
+      window.alert("Registration Successfull!");
+      navigate("/application");
+    }
+  };
+
+  const handleImage = (e) => {
+    setImage(e.target.files);
+  };
+  console.log(image);
   console.log(state.fullName);
   console.log(state.DOB);
   console.log(state.category);
@@ -39,7 +79,10 @@ const Form = () => {
       <h2 className=" pl-2 uppercase pt-10 pb-5 w-1/2 mx-auto text-lg font-semibold">
         Submit your Application
       </h2>
-      <form className=" w-1/2 mx-auto flex flex-col bg-white px-16 py-10 rounded-md shadow-md">
+      <form
+        method="POST"
+        className=" w-1/2 mx-auto flex flex-col bg-white px-16 py-10 rounded-md shadow-md"
+      >
         <Input
           text={"Full Name"}
           type={"text"}
@@ -58,7 +101,7 @@ const Form = () => {
         />
         <div className="mr-2 mb-6 text-lg">
           <label htmlFor={"Gender"}>Gender :</label>
-          {gender.map((g, index) => (
+          {genders.map((g, index) => (
             <label className="mx-2">
               <input
                 id="Gender"
@@ -109,6 +152,7 @@ const Form = () => {
           name={"img"}
           type={"file"}
           accept={"image/*"}
+          onChanges={handleImage}
         />
         <Input
           text={"Signature Picture"}
@@ -117,12 +161,13 @@ const Form = () => {
           accept={"image/*"}
         />
         <div className="w-full flex justify-center mt-8">
-        <button
-          className="px-4 py-2 bg-blue-600 text-white w-24 rounded-md"
-          type="submit"
-        >
-          Submit
-        </button>
+          <button
+            className="px-4 py-2 bg-blue-600 text-white w-24 rounded-md"
+            type="submit"
+            onClick={postData}
+          >
+            Submit
+          </button>
         </div>
       </form>
     </div>

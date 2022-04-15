@@ -5,6 +5,10 @@ const formSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  DOB: {
+    type: String,
+    required: true,
+  },
   category: {
     type: String,
     required: true,
