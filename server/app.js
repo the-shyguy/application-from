@@ -1,6 +1,8 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const bodyParser = require("body-parser");
+
 dotenv.config();
 
 const app = express();
@@ -8,12 +10,19 @@ require("./DB/connection");
 
 const Form = require("./Schema/applicationSchema");
 
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  })
+);
 app.use(express.json());
 app.use(cors());
 
 const PORT = process.env.PORT;
 
 app.post("/", async (req, res) => {
+  const url = req.protocol + "://" + req.get("host");
   const { fullName, DOB, category, email, phone, address, gender } = req.body;
 
   if (
@@ -57,7 +66,7 @@ app.post("/", async (req, res) => {
       res.status(500).json({ message: "Failed to register application" });
     }
   } catch (error) {
-    console.log(err);
+    console.log(error);
   }
 });
 

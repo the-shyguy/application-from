@@ -65,6 +65,10 @@ const Form = () => {
   const handleImage = (e) => {
     setImage(e.target.files);
   };
+
+  // const readImage = () => {
+  //   const reader =
+  // }
   console.log(image);
   console.log(state.fullName);
   console.log(state.DOB);
